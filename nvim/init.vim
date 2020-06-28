@@ -6,10 +6,10 @@ call plug#begin("~/.vim/plugged")
   Plug 'scrooloose/nerdcommenter'
   Plug 'itchyny/lightline.vim'
   Plug 'pangloss/vim-javascript'
-  Plug 'plasticboy/vim-markdown'
+  Plug 'gabrielelana/vim-markdown'
   Plug 'leafgarland/typescript-vim'
-  Plug 'vim-syntastic/syntastic'
   Plug 'frazrepo/vim-rainbow'
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -30,12 +30,20 @@ set ruler
 set mouse=a
 set guicursor=
 set noerrorbells
+set path+=**
+set wildmenu
+set wildignore+=*/node_modules/*,*/__pycache__/*,*/venv/*,*/build/*
 
+" CtrlP Settings 
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
 
 " Shortcuts and Keybinding
 let mapleader = " "
 nnoremap <leader>nt :NERDTree
 nnoremap <leader>ntt :NERDTreeToggle
+nnoremap <leader>ff :CtrlP<Return>
+nnoremap <leader>fo :CtrlPMixed<Return>
 " NerdTree config
 let g:NERDTreeMouseMode=3
 let g:NERDTreeMinimalUI = 1
@@ -43,17 +51,6 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode=2
-
-" Syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 
 hi SignColumn             ctermbg=Black
 " Semshi Config
