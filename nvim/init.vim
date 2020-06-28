@@ -25,6 +25,7 @@ set ruler
 highlight Comment ctermfg=green
 set mouse=a
 let g:NERDTreeMouseMode=3
+set guicursor=
 
 " Splits and Tabbed File
 " Remap splits navigation to just CTRL + hjkl 
