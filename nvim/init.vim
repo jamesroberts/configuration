@@ -16,31 +16,34 @@ call plug#end()
 
 "Config Section
 syntax on
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
-set ai
+set smartindent
 set number
 set hlsearch
+set incsearch
+set smartcase
+set nowrap
+set noswapfile
 set ruler
 set mouse=a
 set guicursor=
+set noerrorbells
 
+
+" Shortcuts and Keybinding
+let mapleader = " "
+nnoremap <leader>nt :NERDTree
+nnoremap <leader>ntt :NERDTreeToggle
 " NerdTree config
 let g:NERDTreeMouseMode=3
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeChDirMode=2
 
-
-" Splits and Tabbed File
-" Remap splits navigation to just CTRL + hjkl 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-" Shortcuts and Keybinding
-nnoremap :nt :NERDTreeToggle
 " Syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -51,6 +54,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+
+hi SignColumn             ctermbg=Black
 " Semshi Config
 function MyCustomHighlights()
  hi semshiLocal           ctermfg=15 guifg=#ffffff
