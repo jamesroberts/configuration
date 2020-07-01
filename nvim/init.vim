@@ -2,7 +2,6 @@ call plug#begin("~/.vim/plugged")
   " Plugin Section
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-surround'
-  Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'itchyny/lightline.vim'
   Plug 'pangloss/vim-javascript'
@@ -10,6 +9,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'leafgarland/typescript-vim'
   Plug 'frazrepo/vim-rainbow'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'tpope/vim-vinegar'
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -27,6 +27,7 @@ set smartcase
 set nowrap
 set noswapfile
 set ruler
+set nofoldenable
 set mouse=a
 set guicursor=
 set noerrorbells
@@ -40,19 +41,14 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " Shortcuts and Keybinding
 let mapleader = " "
-nnoremap <leader>nt :NERDTree
-nnoremap <leader>ntt :NERDTreeToggle
+nnoremap <leader>e :Explore<Return>
 nnoremap <leader>ff :CtrlP<Return>
 nnoremap <leader>fo :CtrlPMixed<Return>
-" NerdTree config
-let g:NERDTreeMouseMode=3
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeChDirMode=2
 
 hi SignColumn             ctermbg=Black
+hi VertSplit              cterm=NONE ctermfg=DarkGray
+hi EndOfBuffer            ctermfg=Black
+hi Directory              ctermfg=Blue
 " Semshi Config
 function MyCustomHighlights()
  hi semshiLocal           ctermfg=15 guifg=#ffffff
@@ -85,6 +81,7 @@ function MyCustomHighlights()
  hi CocWarningFloat       ctermfg=Yellow
  hi SignColumn            ctermbg=Black
  hi CocHighlightText      ctermbg=Black
+ hi Directory ctermfg=LightBlue
  sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 autocmd FileType python call MyCustomHighlights()
@@ -260,3 +257,11 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+set encoding=utf8
+set guifont=DroidSansMono:h20
+
+hi NerdTreeCWD ctermfg=Green
+hi Directory ctermfg=LightBlue
+
