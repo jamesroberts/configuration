@@ -16,6 +16,7 @@ call plug#end()
 
 "Config Section
 syntax on
+filetype plugin on
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -45,10 +46,31 @@ nnoremap <leader>e :Explore<Return>
 nnoremap <leader>ff :CtrlP<Return>
 nnoremap <leader>fo :CtrlPMixed<Return>
 
-hi SignColumn             ctermbg=Black
-hi VertSplit              cterm=NONE ctermfg=DarkGray
-hi EndOfBuffer            ctermfg=Black
-hi Directory              ctermfg=Blue
+" Custom Highlights
+
+hi SignColumn            ctermbg=Black
+hi VertSplit             cterm=NONE ctermfg=DarkGray
+hi EndOfBuffer           ctermfg=Black
+hi Directory             ctermfg=Blue
+hi Comment               ctermfg=DarkGray
+hi Function              ctermfg=Blue
+hi Special               ctermfg=Magenta
+hi Statement             ctermfg=Magenta
+hi Todo                  ctermfg=Yellow ctermbg=Black
+hi Search                ctermbg=LightBlue
+hi String                ctermfg=Green
+hi Number                ctermfg=173
+hi Boolean               ctermfg=Blue
+hi Error                 ctermbg=Black
+hi Pmenu                 ctermbg=235 ctermfg=255 guibg=#080808 
+hi PmenuSel              ctermbg=237 ctermfg=255
+hi PmenuSbar             guibg=#bcbcbc
+hi PmenuThumb            guibg=#585858
+hi CocWarningFloat       ctermfg=Yellow
+hi SignColumn            ctermbg=Black
+hi CocHighlightText      ctermbg=Black
+hi LineNr                ctermfg=DarkGray
+
 " Semshi Config
 function MyCustomHighlights()
  hi semshiLocal           ctermfg=15 guifg=#ffffff
@@ -64,24 +86,6 @@ function MyCustomHighlights()
  hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=Black 
  hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=Red
  hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=Black
- hi Comment               ctermfg=DarkGray
- hi Function              ctermfg=Blue
- hi Special               ctermfg=Magenta
- hi Statement             ctermfg=Magenta
- hi Todo                  ctermfg=Yellow ctermbg=Black
- hi Search                ctermbg=LightBlue
- hi String                ctermfg=Green
- hi Number                ctermfg=173
- hi Boolean               ctermfg=Blue
- hi Error                 ctermbg=Black
- hi Pmenu                 ctermbg=235 ctermfg=255 guibg=#080808 
- hi PmenuSel              ctermbg=237 ctermfg=255
- hi PmenuSbar             guibg=#bcbcbc
- hi PmenuThumb            guibg=#585858
- hi CocWarningFloat       ctermfg=Yellow
- hi SignColumn            ctermbg=Black
- hi CocHighlightText      ctermbg=Black
- hi Directory             ctermfg=Blue
  sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 autocmd FileType python call MyCustomHighlights()
@@ -116,7 +120,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -221,11 +225,6 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
@@ -257,5 +256,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 
