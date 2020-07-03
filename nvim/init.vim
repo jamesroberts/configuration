@@ -46,6 +46,9 @@ nnoremap <leader>e :Explore<Return>
 nnoremap <leader>ff :CtrlP<Return>
 nnoremap <leader>fo :CtrlPMixed<Return>
 
+nnoremap <leader><Tab> :bprev<Return>
+nnoremap <leader>\ :bnext<Return>
+
 " Custom Highlights
 
 hi SignColumn            ctermbg=Black
