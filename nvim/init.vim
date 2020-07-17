@@ -46,8 +46,16 @@ nnoremap <leader>e :Explore<Return>
 nnoremap <leader>ff :CtrlP<Return>
 nnoremap <leader>fo :CtrlPMixed<Return>
 
+" Buffers
 nnoremap <leader><Tab> :bprev<Return>
 nnoremap <leader>\ :bnext<Return>
+
+" Tabs
+nnoremap <leader>te :tabedit
+nnoremap <leader>tc :tabclose
+nnoremap <leader>onlyt :tabonly
+nnoremap <leader>tn :tabn<Return>
+nnoremap <leader>tp :tabp<Return>
 
 " Custom Highlights
 
